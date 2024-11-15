@@ -1,23 +1,27 @@
 {
-  "name": "nano-form-filler",
-  "version": "1.0.0",
-  "description": "",
-  "main": "background.js",
-  "scripts": {
-    "build": "webpack --mode=production",
-    "dev": "webpack --mode=production --watch"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "copy-webpack-plugin": "^12.0.2",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.6.3",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
-  },
-  "dependencies": {
-    "chrome-types": "^0.1.321"
-  }
+    "name": "nano-form-filler",
+    "version": "1.0.0",
+    "description": "",
+    "main": "background.js",
+    "scripts": {
+        "build": "webpack --mode=production",
+        "dev": "webpack --mode=production --watch",
+        "prettier": "prettier --cache --write .",
+        "prettier:check": "prettier --cache --check ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "copy-webpack-plugin": "^12.0.2",
+        "prettier": "^3.3.3",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.6.3",
+        "webpack": "^5.96.1",
+        "webpack-cli": "^5.1.4"
+    },
+    "dependencies": {
+        "@types/dom-chromium-ai": "^0.0.2",
+        "chrome-types": "^0.1.321"
+    }
 }
