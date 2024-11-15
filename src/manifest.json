@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "key": "lohdjpkdanlgpinochfceijcaeaokeje",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqKk4X8ykTycHdh/209gtFBeqUzywQfLLia22dDyhsZw8w3Dj2rkhWGYOIxq1RLDR4cTkU1I0a8d3gfOFjmnScF4lwCXwwsSOQOjsIk10IkEia2bpJ8CYOP7QNJqTLY9gFMwCsZ87+7pJB9hgI4yfsRnsKg4XPzSNPFj0pC7svaPIueqlCrdprabk1rkjkTOfK0IpzEgPXfX+1k/HU0OLl75WTaCWoIfKMvBWb3LsgSEPKFSjHwJR9uY0wv9j+gFSI2F4bZR1Em7icUa+sNU9cIzljWSARTtGGLRhmKmaCHMnzgHgrOs5BXiZmqiOxR4U+UCb6CI2QYoyi3aUUT25PQIDAQAB",
   "name": "nano form filler",
   "version": "1.0",
   "description": "Nano form filler is a smart form filler that helps you fill out forms in a single click with the help of nano Gemini",
