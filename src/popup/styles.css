@@ -52,7 +52,27 @@ p {
     border-color: #ccc;
 }
 
+.action-button:active {
+    background-color: #d4d4d4;
+    border-color: #bbb;
+}
+
 /* Icon Styling */
 .icon {
     margin-right: 8px;
+}
+
+/* form count line */
+.formCount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 1rem;
+}
+
+.formCount > * {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 0rem;
 }

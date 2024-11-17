@@ -10,10 +10,14 @@
         <div class="container">
             <h2>Form Automation</h2>
             <p>Choose an action to automate form filling</p>
-            <button id="loadFormsButton">Load Forms</button>
-            <div> Form count: <span id="formCount">0</span> </div>
+            <div class="formCount">
+                <div> Form count: <span id="formCount">0</span> </div>
+                <button id="loadFormsButton" class="action-button">
+                    <span class="icon">⌨️</span> Reload Forms
+                </button>
+            </div>
             <button id="autoFillFormButton" class="action-button">
-                <span class="icon">🔄</span> Fill Randomly
+                <span class="icon">⌨️</span> Fill Randomly
             </button>
             <button id="takeScreenshotButton" class="action-button">
                 <span class="icon">📸</span> Take Screenshot

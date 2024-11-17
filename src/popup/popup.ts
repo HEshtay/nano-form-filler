@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("useSpeechButton")?.addEventListener("click", () => {
         console.log("useSpeechButton");
     });
+
+    setTimeout(() => {
+        console.log("onStartup");
+        actionInCurrentTab("loadForms");
+    }, 250);
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
