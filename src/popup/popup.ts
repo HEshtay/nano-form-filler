@@ -1,15 +1,6 @@
-function actionInCurrentTab(action: string): void {
-    console.log(action);
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        const tabId = tabs[0].id;
-        if (tabId == null) {
-            return;
-        }
-        chrome.tabs.sendMessage(tabId, { action }, {}, (response) => {
-            console.log("actionresponse:", response);
-        });
-    });
-}
+import { actionInCurrentTab } from "./util/action-in-current-tab";
+import { fillFormSelect } from "./util/fill-form-select";
+import { getSelectedFormIndex } from "./util/get-selected-form-index";
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM ready");
@@ -19,8 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("autoFillFormButton")?.addEventListener("click", () => {
-        console.log("autoFillFormButton");
-        actionInCurrentTab("autoFillFormButton");
+        actionInCurrentTab("autoFillFormButton", {
+            index: getSelectedFormIndex(),
+        });
     });
 
     document.getElementById("takeScreenshotButton")?.addEventListener("click", () => {
@@ -40,9 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     switch (request.action) {
         case "formsLoaded":
-            const element = document.getElementById("formCount");
-            if (element == null) return;
-            element.innerText = request.data.count;
+            fillFormSelect(request.data.titles);
             break;
         default:
             break;
