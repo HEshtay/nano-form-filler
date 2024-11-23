@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@types/dom-chromium-ai": "^0.0.2",
-        "chrome-types": "^0.1.321"
+        "chrome-types": "^0.1.321",
+        "groq-sdk": "^0.8.0"
     }
 }
