@@ -78,3 +78,14 @@ p {
     text-align: center;
     margin-bottom: 0rem;
 }
+
+/* Status Styling */
+.status {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.status.recording {
+    color: red;
+}

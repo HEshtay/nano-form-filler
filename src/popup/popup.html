@@ -26,9 +26,22 @@
             <button id="takeScreenshotButton" class="action-button">
                 <span class="icon">📸</span> Take Screenshot
             </button>
-            <button id="useSpeechButton" class="action-button">
-                <span class="icon">🎤</span> Start Voice Input
-            </button>
+            <div>
+                <button id="startRecordingButton" class="action-button">
+                    <span class="icon">🎤</span> Start Recording
+                </button>
+                <button id="stopRecordingButton" class="action-button">
+                    <span class="icon">🛑</span> Stop Recording
+                </button>
+                <select id="microphone" disabled>
+                    <option value="allow">Allow</option>
+                    <option value="ask">Ask</option>
+                    <option value="block">Block</option>
+                </select>
+            </div>
+            <div id="recordingStatus" class="status">
+                Not Recording
+            </div>
         </div>
         <script src="popup.bundle.js" defer></script>
     </body>
