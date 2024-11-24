@@ -7,7 +7,7 @@
         "sourceMap": true,
         "outDir": "dist",
         "esModuleInterop": true,
-        "moduleResolution":"node",
+        "moduleResolution": "node",
         "types": ["chrome-types", "@types/dom-chromium-ai"],
     },
     "include": ["src/**/*"],
