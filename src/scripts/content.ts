@@ -10,14 +10,11 @@ chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse: (response: { success: boolean; error?: string }) => void) => {
         switch (request.action) {
             case "autoFillFormButton":
-                fillForm(request.data.index);
-                sendResponse({ success: true });
+                void fillForm(request.data.index);
                 break;
 
             case "loadForms":
-                console.log("loadForms");
                 getForms(true);
-                sendResponse({ success: true });
                 break;
 
             case "startRecording":
@@ -156,7 +153,7 @@ async function insertTextarea(text: string) {
     submitButton.addEventListener("click", () => {
         console.log("Submitted text:", textarea.value);
     });
-    
+
     startButton.addEventListener("click", async () => {
         const isRecording = await chrome.storage.local.get("isRecording");
         if (isRecording.isRecording) {

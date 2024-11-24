@@ -3,6 +3,7 @@ export function fillFormSelect(labels: string[]): void {
         "selectedFormInput",
     ) as HTMLSelectElement | null;
     if (select == null) return;
+    select.innerHTML = "";
     labels.forEach((label, index) => {
         const option = document.createElement("option");
         option.text = label;
