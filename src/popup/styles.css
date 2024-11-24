@@ -79,13 +79,30 @@ p {
     margin-bottom: 0rem;
 }
 
-/* Status Styling */
-.status {
-    margin-top: 10px;
-    font-size: 1em;
-    color: #333;
+
+.recording-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.status.recording {
-    color: red;
+.recording-controls .action-button {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 0.9em;
+}
+
+.recording-controls .microphone-select {
+    flex: 1;
+    padding: 8px;
+    font-size: 0.9em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.recording-controls select {
+    flex: 1;
 }
