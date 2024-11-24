@@ -6,8 +6,14 @@ export function fillFormSelect(labels: string[]): void {
     select.innerHTML = "";
     labels.forEach((label, index) => {
         const option = document.createElement("option");
-        option.text = label;
+        option.text = label.length !== 0 ? label : "Form " + index;
         option.value = index.toString();
         select.add(option);
     });
+    if (labels.length === 0) {
+        const option = document.createElement("option");
+        option.text = "No Form found";
+        option.value = "-1";
+        select.add(option);
+    }
 }
