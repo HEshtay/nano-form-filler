@@ -1,0 +1,40 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes pulse-shadow {
+    0% {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+}
+@keyframes recording {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.2;
+    }
+}
+.recording {
+    font-family: verdana, sans-serif;
+    color: firebrick;
+    display: inline-block;
+    padding-left: 1.2em;
+    line-height: 1.5em;
+}
+.recording::before {
+    content: "🔴";
+    position: absolute;
+    left: 5px;
+    animation: recording 600ms alternate infinite;
+}

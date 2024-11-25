@@ -1,3 +1,4 @@
+import { fillForm } from "./fill-form";
 import { VoiceRecorder } from "./voice-recorder";
 
 const recorder = new VoiceRecorder();
@@ -16,13 +17,24 @@ export async function handleStartRecording(
         });
     }
 }
-
-export async function insertTextarea(text: string) {
+export async function insertTextarea(
+    text: string,
+    formIndex?: number,
+    isRecording: boolean = false,
+) {
     let sidebar = document.getElementById("voice-transcriber-sidebar");
     if (sidebar) {
         const textarea = sidebar.querySelector("textarea");
+        const startStopButton = sidebar.querySelector("#startStopButton") as HTMLButtonElement;
         if (textarea) {
             textarea.value = text;
+        }
+        if (startStopButton) {
+            startStopButton.textContent = isRecording ? "Stop Listening" : "Start Listening";
+            startStopButton.classList.toggle("recording", isRecording);
+            setTimeout(() => {
+                startStopButton.style.animation = isRecording ? "pulse-shadow 1s infinite" : "";
+            }, 100);
         }
         sidebar.style.transform = "translateX(0)";
         return;
@@ -81,7 +93,9 @@ export async function insertTextarea(text: string) {
     sidebar.appendChild(textarea);
 
     const startButton = document.createElement("button");
-    startButton.textContent = "Start Listening";
+    startButton.textContent = isRecording ? "Stop Listening" : "Start Listening";
+    startButton.classList.toggle("recording", isRecording);
+    startButton.id = "startStopButton";
     startButton.style.width = "100%";
     startButton.style.padding = "10px";
     startButton.style.backgroundColor = "#000";
@@ -89,6 +103,21 @@ export async function insertTextarea(text: string) {
     startButton.style.border = "none";
     startButton.style.cursor = "pointer";
     startButton.style.marginBottom = "10px";
+    startButton.style.position = "relative";
+
+    const loadingIndicator = document.createElement("div");
+    loadingIndicator.style.position = "absolute";
+    loadingIndicator.style.top = "50%";
+    loadingIndicator.style.left = "50%";
+    loadingIndicator.style.transform = "translate(-50%, -50%)";
+    loadingIndicator.style.border = "4px solid #f3f3f3";
+    loadingIndicator.style.borderTop = "4px solid #3498db";
+    loadingIndicator.style.borderRadius = "50%";
+    loadingIndicator.style.width = "20px";
+    loadingIndicator.style.height = "20px";
+    loadingIndicator.style.animation = "spin 2s linear infinite";
+    loadingIndicator.style.display = "none";
+    startButton.appendChild(loadingIndicator);
     sidebar.appendChild(startButton);
 
     const clearButton = document.createElement("button");
@@ -117,17 +146,28 @@ export async function insertTextarea(text: string) {
 
     submitButton.addEventListener("click", () => {
         console.log("Submitted text:", textarea.value);
+        fillForm(formIndex ?? 0, textarea.value);
     });
 
     startButton.addEventListener("click", async () => {
-        const isRecording = await chrome.storage.local.get("isRecording");
-        if (isRecording.isRecording) {
-            await handleStopRecording(() => {});
+        const isRecordingStorage = (await chrome.storage.local.get("isRecording")) || {
+            isRecording,
+        };
+        console.log("isRecordingStorage", isRecordingStorage);
+        if (isRecordingStorage.isRecording) {
+            loadingIndicator.style.display = "block";
+            await handleStopRecording(() => {
+                loadingIndicator.style.display = "none";
+                startButton.style.animation = ""; // Remove pulse-shadow animation
+            });
             startButton.textContent = "Start Listening";
+            startButton.classList.remove("recording");
             await chrome.storage.local.set({ isRecording: false });
         } else {
             await handleStartRecording(() => {});
             startButton.textContent = "Stop Listening";
+            startButton.classList.add("recording");
+            startButton.style.animation = "pulse-shadow 1s infinite";
             await chrome.storage.local.set({ isRecording: true });
         }
     });

@@ -59,6 +59,13 @@ p {
     border-color: #bbb;
 }
 
+.action-button:disabled {
+    background-color: #e0e0e0;
+    border-color: #c0c0c0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+}
+
 /* Icon Styling */
 .icon {
     margin-right: 8px;

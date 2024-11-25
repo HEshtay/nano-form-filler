@@ -41,7 +41,7 @@ export async function generateFormData(form: SelectedForm, input?: string) {
             Generate some randomized data wich is not common but fit in the fields.
         `);
     } else {
-        reply = await session.prompt(``);
+        reply = await session.prompt(input);
     }
 
     return JSON.parse(reply ?? "{}");
