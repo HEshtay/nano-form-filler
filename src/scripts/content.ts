@@ -1,6 +1,6 @@
 import { fillForm } from "./util/fill-form";
 import { getForms } from "./util/get-forms";
-import { handleStartRecording, insertTextarea } from "./util/handle-recording";
+import { handleStartRecording, handleStopRecording, insertTextarea } from "./util/handle-recording";
 
 console.log("Nano Form Filler - Content Script");
 
@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(
                 break;
 
             case "stopRecording":
-                handleStartRecording(sendResponse);
+                handleStopRecording(sendResponse);
                 break;
             case "insertTextarea":
                 insertTextarea(request.data.text, request.data.index, request.data.isRecording);
