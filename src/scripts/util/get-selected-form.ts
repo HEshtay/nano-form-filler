@@ -1,6 +1,6 @@
 import { getForms } from "./get-forms";
 
-interface InputOption {
+export interface InputOption {
     value: string;
     id?: string;
     label: string;
@@ -11,19 +11,19 @@ interface BaseInput {
     type: string;
     id: string | null;
     name: string | null;
-    element?: Element;
+    element?: HTMLInputElement;
 }
 
-interface TextInput extends BaseInput {
+export interface TextInput extends BaseInput {
     placeholder?: string;
     value?: string | null;
 }
 
-interface RadioInput extends BaseInput {
+export interface RadioInput extends BaseInput {
     options: InputOption[];
 }
 
-interface CheckboxInput extends BaseInput {
+export interface CheckboxInput extends BaseInput {
     options: InputOption[];
 }
 
@@ -32,7 +32,7 @@ interface SelectInput extends BaseInput {
     selected?: string | number | null;
 }
 
-type FormInput = TextInput | RadioInput | CheckboxInput | SelectInput;
+export type FormInput = TextInput | RadioInput | CheckboxInput | SelectInput;
 
 export interface FormStructure {
     formId: string;
@@ -115,7 +115,10 @@ function extractFormStructure(form: HTMLFormElement, formIdentifier: string): Fo
     return formStructure;
 }
 
-function extractInputs(inputs: NodeListOf<Element>, formStructure: FormStructure): void {
+function extractInputs(
+    inputs: NodeListOf<Element | HTMLInputElement>,
+    formStructure: FormStructure,
+): void {
     inputs.forEach((element) => {
         const { type, id, name, placeholder, value, checked } = element as HTMLInputElement;
 
@@ -123,7 +126,7 @@ function extractInputs(inputs: NodeListOf<Element>, formStructure: FormStructure
             type: element.tagName.toLowerCase() === "textarea" ? "textarea" : type,
             id: id || null,
             name: name || null,
-            element,
+            element: element as HTMLInputElement,
         };
 
         switch (baseInput.type) {
