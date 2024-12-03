@@ -2,7 +2,8 @@
 
 ## Description
 
-Nano Form Filler is a Chrome Extension that automates form filling on websites using natural language processing. It detects forms on web pages and fills them with provided or randomly generated data. The extension also includes voice recording functionality to transcribe audio input into text for form filling.
+Nano Form Filler is a Chrome Extension that automates form filling on websites using natural language processing. It detects forms on web pages and fills them with provided or randomly generated data. The extension also includes voice recording functionality to transcribe audio input into text for form filling. To fill the form randomly or after transcribing the voice input, we use the Google Prompt API to get back the data with values in the structure we request it .
+
 > Currently, the Nano Form Filler works only for accessible forms that can be accessed by ID. We are planning to extend the functionality to detect as many forms as possible.
 
 ## Goal
@@ -36,6 +37,7 @@ The goal of Nano Form Filler is to help QA Engineers and other users to speed up
 ## Usage
 
 1. Copy the `src/manifest.json` as `src/manifest.template.json` and add the correct `"trial_tokens": ["<KEY>"]`.
+
 -   To use the prompt API in the extension context, you need to get a trial token. You can do so by following the steps in this documentation: [Chrome Prompt API Documentation](https://developer.chrome.com/docs/extensions/ai/prompt-api)
 
 2. For voice transcription, we are using Groq. You can generate an API Key for free under [Groq Console](https://console.groq.com/keys) and add it to the `background.ts` inside the `apiKey`.
