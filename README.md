@@ -62,7 +62,7 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 
 ## Acknowledgements
 
--   [Groq SDK](https://github.com/groq/groq-sdk)
+-   [Groq SDK](https://github.com/groq/groq-typescript)
 -   [Demo QA](https://demoqa.com/automation-practice-form)
 
 ## Contact
